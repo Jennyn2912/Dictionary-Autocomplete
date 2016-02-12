@@ -1,16 +1,17 @@
 #include "util.hpp"
 #include "DictionaryHashtable.hpp"
-#include <iterator>
+#include <iostream>
+
 
 /* Create a new Dictionary that uses a Hashset back end */
 DictionaryHashtable::DictionaryHashtable(){
-	this->hashSet = new std::unordered_set<std::string>();
+
 }
 
 /* Insert a word into the dictionary. */
 bool DictionaryHashtable::insert(std::string word)
 {
-	auto inserted = (this->hashSet)->insert(word);
+	auto inserted = hashSet.insert(word);
 
 	if (inserted.second) {
 		return true;
@@ -24,10 +25,14 @@ bool DictionaryHashtable::insert(std::string word)
 /* Return true if word is in the dictionary, and false otherwise */
 bool DictionaryHashtable::find(std::string word) const
 {
-	auto found = (this->hashSet)->find (word);
+	auto found = hashSet.find (word);
 
-	if ( found == )
-
+	if ( found == hashSet.end()) {
+		return false;
+	}
+	else {
+		return true;
+	}
 
 }
 

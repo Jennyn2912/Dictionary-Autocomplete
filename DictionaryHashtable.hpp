@@ -34,7 +34,7 @@ public:
 
 private:
   // Add your own data members and methods here
-	std::unordered_set<std::string> * hashSet; 
+	std::unordered_set<std::string> hashSet; 
 };
 
 #endif // DICTIONARY_HASHTABLE_HPP
