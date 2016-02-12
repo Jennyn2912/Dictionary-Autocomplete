@@ -2,7 +2,9 @@
 #include "DictionaryTrie.hpp"
 
 /* Create a new Dictionary that uses a Trie back end */
-DictionaryTrie::DictionaryTrie(){}
+DictionaryTrie::DictionaryTrie(){
+	root = new MNode::MNode();
+}
 
 /* Insert a word with its frequency into the dictionary.
  * Return true if the word was inserted, and false if it
@@ -10,13 +12,51 @@ DictionaryTrie::DictionaryTrie(){}
  * invalid (empty string) */
 bool DictionaryTrie::insert(std::string word, unsigned int freq)
 {
-  return false;
+  if (word.empty() || DictionaryTrie::find(word)) {
+  	return false;
+  }		
+   
+  const char *charPtr = word.c_str();
+  MNode* currentNode = root;
+  int i, pos;
+
+  for(i = 0; i < word.size(); i++) {
+		char ch = charPtr[i];
+		pos = (int)ch - ((int) 'a');
+		if (currentNode->array[pos]) {
+			currentNode = currentNode->array[pos];
+		}
+
+		else {
+			currentNode->array[pos] = new MNode::MNode();
+		}
+  }
+
+  currentNode->key = true;
+  currentNode->freq = freq;
+  return true;  
 }
 
 /* Return true if word is in the dictionary, and false otherwise */
 bool DictionaryTrie::find(std::string word) const
 {
-  return false;
+	const char *charPtr = word.c_str();
+	MNode* currentNode = root;
+	int i, pos;
+
+
+	for(i = 0; i < word.size(); i++) {
+		char ch = charPtr[i];
+		pos = (int)ch - ((int) 'a');
+		if (currentNode->array[pos]) {
+			currentNode = currentNode->array[pos];
+		}
+		else {
+			return false;
+		}
+
+    }
+  	return true;
 }
 
 /* Return up to num_completions of the most frequent completions

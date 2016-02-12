@@ -8,7 +8,7 @@
 
 #include <vector>
 #include <string>
-
+#include "MNode.hpp"
 /**
  *  The class for a dictionary ADT, implemented as a trie
  *  You may implement this class as either a mulit-way trie
@@ -49,6 +49,8 @@ public:
 
 private:
   // Add your own data members and methods here
+  MNode* root;
+  
 };
 
 #endif // DICTIONARY_TRIE_HPP
