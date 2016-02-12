@@ -6,9 +6,11 @@ LDFLAGS=-g
 
 all: benchtrie util.o
 
-benchtrie: util.o DictionaryTrie.o DictionaryBST.o DictionaryHashtable.o
+benchtrie: util.o DictionaryTrie.o DictionaryBST.o DictionaryHashtable.o MNode.o
 
-DictionaryTrie.o: DictionaryTrie.hpp
+DictionaryTrie.o: DictionaryTrie.hpp 
+
+MNode.o: MNode.hpp
 
 DictionaryBST.o: DictionaryBST.hpp
 
